@@ -39,6 +39,16 @@ sudo journalctl --vacuum-time=1weeks > /dev/null 2>&1
 echo "[*] Cleaning thumbnail cache..."
 rm -rf /home/kersonik/.cache/thumbnails/* > /dev/null 2>&1
 
+# 8. Clean VS Code & Brave browser caches
+echo "[*] Cleaning editor and browser caches..."
+rm -rf /home/kersonik/.config/Code/Cache/* \
+       /home/kersonik/.config/Code/CachedData/* \
+       /home/kersonik/.config/Code/Crashpad/* \
+       /home/kersonik/.config/BraveSoftware/Brave-Browser/Default/Cache/* \
+       /home/kersonik/.config/BraveSoftware/Brave-Browser/Default/Code\ Cache/* \
+       /home/kersonik/.config/BraveSoftware/Brave-Browser/GrShaderCache/* \
+       /home/kersonik/.config/BraveSoftware/Brave-Browser/ShaderCache/* > /dev/null 2>&1
+
 after=$(df / --output=avail | tail -1)
 freed=$(( (after - before) / 1024 ))
 
